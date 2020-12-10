@@ -1,5 +1,7 @@
 import os
-os.remove('server/site.db')
+path = os.path.join('server', 'site.db')
+if os.path.exists(path):
+    os.remove('server/site.db')
 
 from server import db
 db.session.remove()
