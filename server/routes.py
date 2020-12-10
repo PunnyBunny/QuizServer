@@ -13,10 +13,25 @@ def home():
             name = request.form['name']
             date_of_birth = datetime.strptime(request.form['date_of_birth'], '%d-%m-%Y').date()
             gender = request.form['gender']
-            user = models.User(name=name, date_of_birth=date_of_birth, gender=gender)
-            if not user.query.filter_by(name=name).first():
-                db.session.add(user)
-                db.session.commit()
+            score = int(request.form['score'])
+            test_name = request.form['test_name']
+            test_full_score = request.form['test_full_score']
+
+            person = models.Person.query.filter_by(name=name, date_of_birth=date_of_birth, gender=gender).first()
+            if not person:
+                person = models.Person(name=name, date_of_birth=date_of_birth, gender=gender)
+                db.session.add(person)
+
+            test = models.Test.query.filter_by(name=test_name, full_score=test_full_score).first()
+            if not test:
+                test = models.Test(name=test_name, full_score=test_full_score)
+                db.session.add(test)
+
+            result = models.TestResult(score=score, person=person, test=test)
+
+            db.session.add(result)
+            db.session.commit()
+
             return actions.SUCCESS
         else:
             return actions.FAIL
