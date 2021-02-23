@@ -48,7 +48,9 @@ def home():
         print(person.grade_level)
         filename = f'{person.school_name}, {person.grade_level}, {person.name}, ({person.gender}), {test.name}, {timestamp.strftime("%Y-%m-%d %H-%M-%S")}.zip'
         print(filename)
-        file.save(os.path.join('.', 'audios', filename))
+        if not os.path.exists('audios'):
+            os.mkdir('audios')
+        file.save(os.path.join('audios', filename))
         result = models.TestResult(person=person, test=test, filename=filename, timestamp=timestamp)
     else:
         score = request.form['score']
