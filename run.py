@@ -11,7 +11,7 @@ def main():
         print("Usage: python run.py [port number]")
         return
     port = int(sys.argv[1])
-    http_server = WSGIServer(('0.0.0.0', port), app.wsgi_app)
+    http_server = WSGIServer(('0.0.0.0', port), app.wsgi_app, ssl_context='adhoc')
     print("Server running...")
     http_server.serve_forever()
 
