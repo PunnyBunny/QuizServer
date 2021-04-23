@@ -1,8 +1,20 @@
-from server import app
+import sys
+
 from gevent.pywsgi import WSGIServer
 
-if __name__ == '__main__':
+from server import app
+
+
+def main():
     print("Server starting...")
-    http_server = WSGIServer(('0.0.0.0', 5000), app.wsgi_app)
+    if len(sys.argv) != 2:
+        print("Usage: python run.py [port number]")
+        return
+    port = int(sys.argv[1])
+    http_server = WSGIServer(('0.0.0.0', port), app.wsgi_app)
     print("Server running...")
     http_server.serve_forever()
+
+
+if __name__ == '__main__':
+    main()
