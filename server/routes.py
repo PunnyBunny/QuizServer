@@ -26,8 +26,8 @@ def home():
     if request.method == 'GET':
         return '''
             <!doctype html>
-            <title>JOON GAY</title>
-            <h1>JOON GAY</h1>
+            <font style="font-family:times;font-size:800px;">
+            <font>JOON GAY</font>
         '''
 
     type_ = request.form['type']
