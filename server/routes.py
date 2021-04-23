@@ -22,6 +22,7 @@ score: if type is 'mc' then score of participant in the test
 """
 @app.route('/', methods=['POST'])
 def home():
+    print('here')
     type_ = request.form['type']
     name = request.form['name'].strip()
     date_of_birth = datetime.strptime(request.form['date_of_birth'], '%d-%m-%Y').date()
