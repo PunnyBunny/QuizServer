@@ -7,7 +7,7 @@ from server import app
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python run.py [port number]")
+        print("Usage: python run_gevent.py [port number]")
         return
     port = int(sys.argv[1])
     print("Server starting...")
