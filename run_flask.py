@@ -10,7 +10,7 @@ def main():
     print("Server starting...")
     port = int(sys.argv[1])
     print('Server running...')
-    app.run('0.0.0.0', port=port, ssl_context='adhoc')
+    app.run('0.0.0.0', port=port)
 
 
 if __name__ == '__main__':
