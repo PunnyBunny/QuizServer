@@ -1,5 +1,6 @@
 /audios/
 /server/site.db
 /server/__pycache__/
+/QuizServer.sock
 *.pyc
 
